@@ -3,9 +3,9 @@ import { userRegistration, userLogin, verifiedUser } from '../controllers/userCo
 
 const router = express.Router();
 
-router.post('/register', userRegistration)
-router.post('/login', userLogin)
+router.post('/register', userRegistration);
+router.post('/login', userLogin);
 
-router.get('/verify', verifiedUser)
+router.get('/verify', verifiedUser);
 
 export default router;

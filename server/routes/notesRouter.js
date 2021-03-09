@@ -1,10 +1,11 @@
 import express from 'express';
+import { getNotes, createNotes } from '../controllers/noteController.js';
+import auth from '../middleware/auth.js'
 
 const router = express.Router();
-
-router.get('/', (req, res) =>{
-    res.send("Hola")
-})
+router.route('/')
+    .get(auth, getNotes)
+    .post(auth, createNotes)
 
 router.route('/id:')
     .get()
