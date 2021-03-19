@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'
 import Login from './Components/Login';
 import Notes from './Components/Notes';
 

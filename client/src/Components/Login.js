@@ -1,20 +1,27 @@
 import React from 'react';
 import Notes from './Notes';
+import './styles/Login.css';
 
 function Login() {
     return(
-        <div>
-            <div>
+        <div className = "login-container" >
+            <div className= "login">
                 <h2>Login</h2>
                 <form>
-                    <input type="email" name="email" id="login-email" placeholder="email" required/>
-                    <input type="password" name="password" id="user-password" placeholder="password" required/>
-                    <button type="submit">Login</button>
+                    <div className = "login-input">
+                        <input type="text" name="email" id="login-email" required/>
+                        <label>Email</label>
+                    </div>
+                    <div className="login-input"> 
+                        <input type="password" name="password" id="user-password" required/>
+                        <label>Password</label>
+                    </div>
+                    <button type="submit">Sign in</button>
                 </form>
             </div>
             
             <div>
-                <h2>Register</h2>  
+                 
             </div>
         </div>
     )
