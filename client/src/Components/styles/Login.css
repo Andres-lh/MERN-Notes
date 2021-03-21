@@ -1,6 +1,6 @@
 .login-container {
     height: 100vh;
-    background: url('../../assets/pexels-jessica-lewis-606539.jpg');
+    background: url('../../assets/LoginBackground.jpg');
     background-size: cover;
     background-repeat: no-repeat;   
     color: rgb(228, 228, 228);
@@ -67,7 +67,6 @@ input:-webkit-autofill
     border: none;
     border-bottom: 1px solid white;
     -webkit-text-fill-color: rgb(228, 228, 228);
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
     transition: background-color 5000s ease-in-out 0s;
 }
 
