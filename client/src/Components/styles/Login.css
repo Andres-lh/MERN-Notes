@@ -9,7 +9,7 @@
 .login {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 30%;
     transform: translate(-50%, -50%);
     width: 400px;
     padding: 40px;
@@ -74,7 +74,7 @@ input:-webkit-autofill
     text-align: center;
 }
 
-.login form button {
+.form-button {
     font-size: 16px;
     background: transparent;
     border: none;
@@ -87,8 +87,20 @@ input:-webkit-autofill
     cursor: pointer;
 }
 
-.login form button:hover {
+.form-button:hover {
     transform: scale(1.08);
 }
 
+.register {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 40px;
+    background: rgba(26, 16, 2, 0.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(26, 16, 2, 0.5);
+    border-radius: 10px;
+}
 
