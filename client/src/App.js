@@ -9,7 +9,7 @@ function App() {
 
     useEffect(()=>{
         const checkLogin = async () =>{
-            const token = localStorage.getItem('tokenStore');
+            const token = localStorage.getItem('token');
             if(token){
                 const verified = await axios.get('/api/users/verify', {
                     headers: {Authorization: token}

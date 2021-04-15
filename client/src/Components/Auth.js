@@ -1,13 +1,18 @@
 import React, { useState }from 'react';
-import axios from 'axios';
-import './styles/Login.css';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { signIn, signUp } from '../actions/authActions';
+
+import './styles/Auth.css';
 
 function Login({setIsLogin}) {
 
     const [isSignUp, setIsSignUp] = useState(false);
+    const history = useHistory();
+    const dispatch = useDispatch();
     
     const [user, setUser] = useState({
-        name: '',
+        username: '',
         email: '',
         password: ''
     })
@@ -25,33 +30,13 @@ function Login({setIsLogin}) {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
     }
 
-    const loginSubmit = async e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            const res = await axios.post('/api/users/login', {
-                email: user.email,
-                password: user.password
-            })
-            setUser({name: '', email: '', password: ''})
-            localStorage.setItem('tokenStore', res.data.token);
+        if(isSignUp){
+            dispatch(signUp(user, history))
+        } else {
+            dispatch(signIn(user, history))
             setIsLogin(true)
-        } catch (err) {
-            err.response.data.msg && setErr(err.response.data.msg)
-        }
-    }
-
-    const registerSubmit = async e => {
-        e.preventDefault();
-        try {
-            const res = await axios.post('/api/users/register', {
-                username: user.name,
-                email: user.email,
-                password: user.password
-            })
-            setUser({name: '', email: '', password: ''})
-            setErr(res.data.msg);
-        } catch (err) {
-            err.response.data.msg && setErr(err.response.data.msg)
         }
     }
 
@@ -59,11 +44,11 @@ function Login({setIsLogin}) {
         <div className = "Auth-container" >
             <div className= "Auth">
                 <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
-                <form onSubmit={loginSubmit}>
+                <form onSubmit={handleSubmit}>
                     { isSignUp ? (
                         <>
                             <div className = "Auth-input">
-                                <input type="text" name="name" id="name" value={user.name} required onChange={onChangeInput}/>
+                                <input type="text" name="username" id="username" value={user.username} required onChange={onChangeInput}/>
                                 <label>Username</label>
                             </div>
                             <div className = "Auth-input">
