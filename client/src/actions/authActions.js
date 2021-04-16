@@ -8,6 +8,7 @@ export const signIn = (user, history) => async(dispatch) => {
             type: SIGNIN, 
             data
         })
+        history.push('/');
     } catch (error) {
         console.log(error);
     }

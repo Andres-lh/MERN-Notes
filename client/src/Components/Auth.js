@@ -5,7 +5,7 @@ import { signIn, signUp } from '../actions/authActions';
 
 import './styles/Auth.css';
 
-function Login({setIsLogin}) {
+function Login() {
 
     const [isSignUp, setIsSignUp] = useState(false);
     const history = useHistory();
@@ -36,7 +36,6 @@ function Login({setIsLogin}) {
             dispatch(signUp(user, history))
         } else {
             dispatch(signIn(user, history))
-            setIsLogin(true)
         }
     }
 

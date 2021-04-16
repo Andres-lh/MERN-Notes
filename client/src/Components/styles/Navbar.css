@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar ul {
+    width: 90%;
+    list-style: none;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+
+.navbar ul li {
+    padding: 8px 40px;
+    margin: 0 80px;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 30px;
+    color: rgb(228, 228, 228);
+}
+
+.navbar ul li:hover {
+    border-bottom: 1.5px solid  rgb(228, 228, 228);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: all 0.2s ease-out;
+}
+
+
