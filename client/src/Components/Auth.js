@@ -42,7 +42,7 @@ function Login() {
     return(   
         <div className = "Auth-container" >
             <div className= "Auth">
-                <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
+                <h2>{isSignUp ? 'Register' : 'Log in'}</h2>
                 <form onSubmit={handleSubmit}>
                     { isSignUp ? (
                         <>
@@ -73,12 +73,12 @@ function Login() {
                         )
                     }
                     { isSignUp ? (
-                        <p>Already have an account? <span onClick={switchAuth}> Sign In</span></p>    
+                        <p>Already have an account? <span onClick={switchAuth}> Log in</span></p>    
                         ) : (    
-                        <p>You don't have an account? <span onClick={switchAuth}> Register now!</span></p>
+                        <p>No account yet? <span onClick={switchAuth}> Create one!</span></p>
                         )}
                     
-                    <button className="form-button" type="submit">{isSignUp ? 'Sing Up' : 'Sign In'}</button>
+                    <button className="form-button" type="submit">{isSignUp ? 'Log in' : 'Create Account'}</button>
                     <h3>{err}</h3>  
                 </form>
             </div>

@@ -1,0 +1,7 @@
+.note {
+    margin-top: 2rem;
+    width: 250px;
+    height: 250px;
+    background-image: url('../../assets/notes2.png');
+    background-size: cover;
+}
