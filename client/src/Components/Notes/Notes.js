@@ -3,6 +3,7 @@ import Note from './Note';
 import './Notes.css';
 
 function Notes() {
+
     return (
         <div className="notes">
             <div className="notes-container">
@@ -16,7 +17,6 @@ function Notes() {
                 <Note/>
                 <Note/>
                 <Note/>
-
             </div>
             
         </div>

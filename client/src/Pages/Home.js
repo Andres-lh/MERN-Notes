@@ -9,7 +9,6 @@ import './styles/Home.css';
 function Home() {
     const history = useHistory();
     const [option, setOption] = useState('Notes');
-
     useEffect(()=>{
        const checkLogin = async () =>{
             const token = localStorage.getItem('token');
@@ -23,13 +22,14 @@ function Home() {
             }
         }
         checkLogin();
-    }, [])
+    }, [history])
+
     return (
         <div className = "home">
             <Navbar setOption={setOption}/>
             {
                 option === 'Notes' ? (
-                    <Notes/>
+                    <Notes />
                 ) : (
                     <ExpenseTracker/>
                 )

@@ -6,7 +6,7 @@
     left: 0;
     height: 80px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -16,22 +16,22 @@
 .navbar ul {
     width: 90%;
     list-style: none;
-    justify-content: center;
+    justify-content: space-evenly;
     text-align: center;
     display: flex;
 }
 
 .navbar ul li {
     padding: 8px 40px;
-    margin: 0 80px;
     font-family: 'Chelsea Market', cursive;
     font-size: 30px;
-    color: rgb(228, 228, 228);
+    color: rgb(221, 215, 215);
+    border: 1px solid transparent;
 }
 
 .navbar ul li:hover {
     border-bottom: 1.5px solid  rgb(228, 228, 228);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     transition: all 0.2s ease-out;
 }

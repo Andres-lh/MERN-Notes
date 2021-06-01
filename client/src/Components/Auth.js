@@ -78,7 +78,7 @@ function Login() {
                         <p>No account yet? <span onClick={switchAuth}> Create one!</span></p>
                         )}
                     
-                    <button className="form-button" type="submit">{isSignUp ? 'Log in' : 'Create Account'}</button>
+                    <button className="form-button" type="submit">{isSignUp ? 'Create Account' : 'Log in' }</button>
                     <h3>{err}</h3>  
                 </form>
             </div>

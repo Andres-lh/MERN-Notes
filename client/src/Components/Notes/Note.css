@@ -1,7 +1,39 @@
 .note {
-    margin-top: 2rem;
-    width: 250px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 260px;
+    height: 260px;
     background-image: url('../../assets/notes2.png');
-    background-size: cover;
+    background-size: cover;   
 }
+
+.noteContainer {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 90%;
+    position: relative; 
+ 
+}
+
+.noteContent {
+    height: 90%;
+    width: auto;
+}
+
+.noteFooter {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-around;
+    color: rgb(163, 58, 58);
+}
+
+.edit:hover, 
+.delete:hover {
+    color: rgb(206, 122, 122);
+}
+

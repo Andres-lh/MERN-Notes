@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SIGNIN, SIGNUP, LOGOUT } from '../constants/actionTypes';
+import { SIGNIN, SIGNUP } from '../constants/actionTypes';
 
 export const signIn = (user, history) => async(dispatch) => {
     try {
