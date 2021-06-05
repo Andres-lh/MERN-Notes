@@ -2,8 +2,10 @@ import React, { useState }from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signIn, signUp } from '../actions/authActions';
-
+import { GoogleLogin } from 'react-google-login';
 import './styles/Auth.css';
+
+const Client_Id = process.env.GOOGLE_ID;
 
 function Login() {
 
@@ -39,6 +41,23 @@ function Login() {
         }
     }
 
+    const googleSuccess = async (res) => {
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+
+        try {
+            dispatch({ type: "SIGNIN", data: { result, token }});
+            history.push('/')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const googleFailure = () => {
+        console.log("Google Sign In wan unsuccessful. Try again later...")
+    }
+
+
     return(   
         <div className = "Auth-container" >
             <div className= "Auth">
@@ -73,12 +92,35 @@ function Login() {
                         )
                     }
                     { isSignUp ? (
-                        <p>Already have an account? <span onClick={switchAuth}> Log in</span></p>    
-                        ) : (    
-                        <p>No account yet? <span onClick={switchAuth}> Create one!</span></p>
+                        <div>
+                            <p>Already have an account? <span onClick={switchAuth}> Log In</span></p>
+                            
+                        </div>
+                        
+                        
+                        ) : (  
+                        <> 
+                            <p>No account yet? <span onClick={switchAuth}> Create one!</span></p>
+                        </>
                         )}
-                    
-                    <button className="form-button" type="submit">{isSignUp ? 'Create Account' : 'Log in' }</button>
+
+                        <div>
+                            <button className="form-button" type="submit">{isSignUp ? 'Create Account' : 'Log In' }</button>
+                        </div>
+                        {!isSignUp && 
+                        <>
+                            <GoogleLogin 
+                                clientId = {Client_Id} 
+                                render = {(renderProps) => {
+                                    return <button className="form-button" type="submit" onClick={renderProps.onClick} disabled={renderProps.disabled}> <i class="fab fa-google"></i> Google Log In</button>
+                                }}
+                                onSuccess = {googleSuccess}
+                                onFailure = {googleFailure}
+                                cookiePolicy = "single_host_origin"
+                                />
+                                
+                        </>
+                        }
                     <h3>{err}</h3>  
                 </form>
             </div>
