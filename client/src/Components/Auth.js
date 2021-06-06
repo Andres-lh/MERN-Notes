@@ -5,7 +5,7 @@ import { signIn, signUp } from '../actions/authActions';
 import { GoogleLogin } from 'react-google-login';
 import './styles/Auth.css';
 
-const Client_Id = process.env.GOOGLE_ID;
+const Client_Id = process.env.REACT_APP_GOOGLE_ID;
 
 function Login() {
 
@@ -34,6 +34,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(user)
         if(isSignUp){
             dispatch(signUp(user, history))
         } else {

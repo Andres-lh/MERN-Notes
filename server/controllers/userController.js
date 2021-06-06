@@ -7,21 +7,21 @@ export const userRegistration = async (req, res) => {
     try {
         const user = await Users.findOne({email: email})
         if(user) return res.status(400).json({msg: "The email already exists."});
-
+    
         const passwordHash = await bcrypt.hash(password, 10);
 
-        const newUser = new Users({
-            username: username,
-            email: email,
-            password: passwordHash
+        const newUser = await Users.create({
+            username,
+            email,
+            password: passwordHash,
         })
-        await newUser.save();
-        res.json({msg: "Sign up succesful"});
-    
+
+        const token =  jwt.sign(newUser, process.env.TOKEN, {expiresIn: "5h"});
+        res.status(201).json({result: newUser, token});
+        
     } catch(err) {
         return res.status(500).json({msg: err.message});
     }
-    
 }
 
 export const userLogin = async (req, res) => {
@@ -35,27 +35,8 @@ export const userLogin = async (req, res) => {
 
         const payload = { id: user._id, name: user.username};
         const token = jwt.sign(payload, process.env.TOKEN, {expiresIn: "5h"});
-        res.json({token});
+        res.json({result: user, token});
     } catch(err) {
         return res.status(500).json({msg: err.message})
-    }
-    
-}
-
-export const verifiedUser = (req, res) => {
-    try {
-        const token = req.header("Authorization");
-        if(!token) return res.send(false);
-
-        jwt.verify(token, process.env.TOKEN, async (err, verified) => {
-            if(err) return res.send(false);
-
-            const user = await Users.findById(verified.id)
-            if(!user) return res.send(false);
-
-            return res.send(true);
-        })
-    } catch (err) {
-        return res.status(500).json({msg: err.message})
-    }
+    } 
 }

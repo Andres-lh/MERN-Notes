@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import notesRouter from './routes/notesRouter.js';
@@ -24,9 +23,8 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 
 //Middlewares
-app.use(bodyParser.json({limit: "30mb", extended: true}));
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-//app.use(express.json())
+app.use(express.json({ limit: "30mb", extended: true}));
+app.use(express.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 
 //Routes
