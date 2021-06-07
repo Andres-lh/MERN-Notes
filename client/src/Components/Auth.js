@@ -48,7 +48,7 @@ function Login() {
 
         try {
             dispatch({ type: "SIGNIN", data: { result, token }});
-            history.push('/')
+            history.push('/home')
         } catch (err) {
             console.log(err)
         }
@@ -113,7 +113,7 @@ function Login() {
                             <GoogleLogin 
                                 clientId = {Client_Id} 
                                 render = {(renderProps) => {
-                                    return <button className="form-button" type="submit" onClick={renderProps.onClick} disabled={renderProps.disabled}> <i class="fab fa-google"></i> Google Log In</button>
+                                    return <button className="form-button" type="submit" onClick={renderProps.onClick} disabled={renderProps.disabled}> <i class="fab fa-google"></i> Continue with google</button>
                                 }}
                                 onSuccess = {googleSuccess}
                                 onFailure = {googleFailure}

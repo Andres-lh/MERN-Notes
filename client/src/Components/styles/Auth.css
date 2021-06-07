@@ -1,8 +1,4 @@
-.Auth-container {
-    height: 100vh;
-    background: url('../../assets/LoginBackground.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;   
+.Auth-container {  
     color: rgb(228, 228, 228);
 }
 
@@ -10,7 +6,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-80%, -50%);
     width: 400px;
     padding: 40px;
     background: rgba(26, 16, 2, 0.8);

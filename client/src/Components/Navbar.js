@@ -10,7 +10,7 @@ function Navbar({ setOption }) {
 
     const logout = () => {
         dispatch({type: 'LOGOUT'});
-        history.push('/auth');
+        history.push('/');
     }
 
     return (
