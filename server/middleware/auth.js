@@ -2,11 +2,21 @@ import jwt from 'jsonwebtoken';
 
 const auth = async (req, res, next) => {
     try {
-        const token = req.header("Authorization");
-        const googleToken = token.length > 500;
+        let token;
+        let googleToken;
+
+        if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
+            token = req.headers.authorization.split(" ")[1];
+        }
+
+        if(token && token.length > 500){
+            googleToken = token;
+        }
+
         if(!token) return res.status(400).json({msg: "Invalid Authentication"});
 
         let userData;
+
         if(token && !googleToken) {
             userData = jwt.verify(token, process.env.TOKEN);
             req.userId = userData?.id;

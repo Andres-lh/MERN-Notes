@@ -1,14 +1,15 @@
-import axios from 'axios';
+
 import { SIGNIN, SIGNUP } from '../constants/actionTypes';
+import * as api from '../api/api';
 
 export const signIn = (user, history) => async(dispatch) => {
     try {
-        const { data } = await axios.post('/api/users/login', user);
+        const { data } = await api.login(user);
         dispatch({
             type: SIGNIN, 
             data
         })
-        history.push('/home');
+        history.push('/');
     } catch (error) {
         console.log(error);
     }
@@ -16,11 +17,12 @@ export const signIn = (user, history) => async(dispatch) => {
 
 export const signUp = (user, history) => async(dispatch) => {
     try {
-        const { data } = await axios.post('/api/users/register', user);
+        const { data } = await api.signUp(user)
         dispatch({
             type: SIGNUP,
             data
         })
+        history.push('/')
     } catch (error) {
         console.log(error);
     }

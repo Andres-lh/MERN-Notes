@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signIn, signUp } from '../actions/authActions';
@@ -12,6 +12,12 @@ function Login() {
     const [isSignUp, setIsSignUp] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(localStorage.getItem('profile')){
+            history.push('/');
+        }
+    }, [history])
     
     const [user, setUser] = useState({
         username: '',
@@ -48,7 +54,7 @@ function Login() {
 
         try {
             dispatch({ type: "SIGNIN", data: { result, token }});
-            history.push('/home')
+            history.push('/')
         } catch (err) {
             console.log(err)
         }
@@ -61,6 +67,7 @@ function Login() {
 
     return(   
         <div className = "Auth-container" >
+            <h1 className="Auth-title">keep your notes organized in just one place</h1>
             <div className= "Auth">
                 <h2>{isSignUp ? 'Register' : 'Log in'}</h2>
                 <form onSubmit={handleSubmit}>
@@ -93,10 +100,10 @@ function Login() {
                         )
                     }
                     { isSignUp ? (
-                        <div>
+                        <>
                             <p>Already have an account? <span onClick={switchAuth}> Log In</span></p>
                             
-                        </div>
+                        </>
                         
                         
                         ) : (  

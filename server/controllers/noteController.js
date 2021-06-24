@@ -2,8 +2,9 @@ import Notes from '../models/noteModel.js';
 
 export const getNotes = async (req, res) => {
     try {
-        const notes = await Notes.find({userId: req.user.id});
-        res.json(notes);
+        const notes = await Notes.find({userId: req.userId});
+        if(notes.length === 0) return res.status(400).json({error: "You don´t have notes"})
+        res.status(200).json(notes);
     } catch (err) {
         return res.status(500).json({msg: err.message});
     }
