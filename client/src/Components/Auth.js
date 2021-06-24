@@ -40,7 +40,6 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user)
         if(isSignUp){
             dispatch(signUp(user, history))
         } else {

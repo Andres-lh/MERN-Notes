@@ -1,13 +1,13 @@
 import React from 'react';
 import './Note.css';
 
-function Note() {  
+function Note({note}) {  
 
     return (
         <div className = "note" >
             <div className = "noteContainer">
                 <div className = "noteContent">
-
+                    {note.title}
                 </div>
                 <div className = "noteFooter">
                     <i className="fas fa-edit edit" ></i>

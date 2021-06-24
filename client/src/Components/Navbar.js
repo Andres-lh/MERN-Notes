@@ -10,6 +10,7 @@ function Navbar({ setOption }) {
 
     const logout = () => {
         dispatch({type: 'LOGOUT'});
+        window.location.reload();
         history.push('/');
     }
 
@@ -20,7 +21,7 @@ function Navbar({ setOption }) {
                 <li onClick={()=> setOption('ExpenseTracker')}>Expense Tracker</li>
             </ul>
             <div className = "navbar-account">
-                <i onClick={logout}>logout</i>
+                <i onClick={logout} on>logout</i>
             </div>
             
         </div>

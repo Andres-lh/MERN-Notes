@@ -1,34 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Note from './Note';
-import * as api from '../../api/api';
+import { useSelector } from 'react-redux'
+
 import './Notes.css';
 
 function Notes() {
 
-    const [notes, setNotes] = useState([]);
-
-    useEffect(() => {
-        try {
-            const fetch = async () => {
-                const data = await api.getNotes();
-                setNotes(data.data)
-                
-            }
-            fetch();
-        } catch (error) {
-            console.log(error.response)
-        }
-       
-    }, [])
-
-    console.log(notes)
-
+    const { loading, error, notes } = useSelector((state) => state.notes)
+    console.log(error)
     return (
         <div className="notes">
-            <div className="notes-container">
-                <Note/>
-                
-            </div>
+            {loading ? (
+                    <h3>Loading...</h3>
+                ) : error ? (
+                    <h3>Somethin went wrong</h3>
+                ) : (
+                    <div className="notes-container">
+                        {notes.map((note) => (
+                            <Note key={note._id} note={note} />
+                        ))}
+                    </div>
+                )
+                    
+                }
+            
             
         </div>
     )
