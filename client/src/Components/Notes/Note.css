@@ -20,6 +20,8 @@
 
 .noteContent {
     height: 90%;
+    margin-top: 60px;
+    color: black;
     width: auto;
 }
 
@@ -37,3 +39,13 @@
     color: rgb(206, 122, 122);
 }
 
+
+.button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    height: 100px;
+    width: 100px;
+    background-image: url('../../assets/new.png');
+    background-size: cover;
+}

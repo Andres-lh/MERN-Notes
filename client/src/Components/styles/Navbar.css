@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
 
+
 .navbar {
     position: sticky;
     top: 0;
@@ -11,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    z-index: 9;
 }
 
 .navbar ul {
@@ -25,7 +27,7 @@
     padding: 8px 40px;
     font-family: 'Chelsea Market', cursive;
     font-size: 30px;
-    color: rgb(221, 215, 215);
+    color: rgb(240, 240, 240);
     border: 1px solid transparent;
 }
 
@@ -35,5 +37,6 @@
     border-radius: 10px;
     transition: all 0.2s ease-out;
 }
+
 
 

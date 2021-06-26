@@ -7,7 +7,8 @@ function Note({note}) {
         <div className = "note" >
             <div className = "noteContainer">
                 <div className = "noteContent">
-                    {note.title}
+                    <h2>{note.title}</h2>
+                    <p>{note.content}</p>
                 </div>
                 <div className = "noteFooter">
                     <i className="fas fa-edit edit" ></i>

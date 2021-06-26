@@ -18,9 +18,11 @@ function Navbar({ setOption }) {
         <div className = "navbar">
             <ul>
                 <li onClick={()=> setOption('Notes')}>Notes</li>
-                <li onClick={()=> setOption('ExpenseTracker')}>Expense Tracker</li>
+                <li onClick={()=> setOption('ExpenseTracker')}>Expense Tracker</li> 
             </ul>
+            
             <div className = "navbar-account">
+                
                 <i onClick={logout} on>logout</i>
             </div>
             
