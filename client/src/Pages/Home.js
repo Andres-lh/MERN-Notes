@@ -14,6 +14,8 @@ function Home() {
         dispatch(getNotes());
     },[dispatch])
 
+    
+
     return (
         <div className = "home">
             <Navbar setOption={setOption}/>

@@ -19,10 +19,10 @@ const auth = async (req, res, next) => {
 
         if(token && !googleToken) {
             userData = jwt.verify(token, process.env.TOKEN);
-            req.userId = userData?.id;
+            req.user = userData;
         } else {
             userData = jwt.verify(token);
-            req.userId = userData?.sub;
+            req.user = userData;
         }
 
         next();

@@ -19,7 +19,7 @@ function Notes() {
                     <h3>Something went wrong</h3>
                 ) : (
                     <div className="notes-container">
-                       {notes.map((note) => (
+                       {notes && notes.map((note) => (
                           <Note key={note._id} note={note} /> 
                        ))}
                        <i onClick={()=> setOpenInput(true)} className="button" />
