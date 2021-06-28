@@ -13,4 +13,5 @@ export const login = (userData) => API.post('/users/login', userData);
 export const signUp = (userData) => API.post('/users/register', userData);
 
 export const fetchNotes = () => API.get('/notes');
-export const createNote = (newNote) => API.post('/notes', newNote)
+export const createNote = (newNote) => API.post('/notes', newNote);
+export const deleteNote = (id) => API.delete( `/notes/${id}`);

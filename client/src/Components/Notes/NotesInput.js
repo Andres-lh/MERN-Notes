@@ -38,7 +38,7 @@ function NotesInput({openInput, setOpenInput}) {
             <div  className="notesInput">
                 <i onClick={() => setOpenInput(false)}>close</i>
                 <div className="notesInput-card">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} autoComplete="off">
                         <div>
                             <label>Title</label>
                             <input type="text" name="title" id="title" value={note.title} required onChange={onChangeInput} />

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState} from 'react';
+import DeleteMessage from './DeleteMessage';
 import './Note.css';
 
 function Note({note}) {  
 
+    const [deleteMessage, setDeleteMessage] = useState(false);
     return (
         <div className = "note" >
             <div className = "noteContainer">
@@ -12,8 +14,9 @@ function Note({note}) {
                 </div>
                 <div className = "noteFooter">
                     <i className="fas fa-edit edit" ></i>
-                    <i className="fas fa-trash-alt delete" ></i>
+                    <i className="fas fa-trash-alt delete" onClick={()=>setDeleteMessage(true)}></i>
                 </div>
+                {deleteMessage && <DeleteMessage id={note._id} setDeleteMessage={setDeleteMessage}/>}
             </div>
             
         </div>
