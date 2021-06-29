@@ -32,21 +32,19 @@ function EditNote({title, id, content, setEditMode}) {
     
     return (
         <div  className="notesInput">
-                <i onClick={()=> setEditMode(false)}>close</i>
-                <div className="notesInput-card">
-                    <form onSubmit={handleSubmit} autoComplete="off">
-                        <div>
-                            <label>Title</label>
-                            <input type="text" name="title" id="title" value={note.title} required onChange = {onChangeInput} />
-                        </div>
-                        <div>
-                            <label>Content</label>
-                            <input type="text" name="content" id="content" value={note.content} required onChange = {onChangeInput} />
-                        </div>
-                        <button>save</button>
-                    </form>
+        <div className="notesInput-card">
+            <form onSubmit={handleSubmit} autoComplete="off" className="notesInput-form">
+                <div className="notesInput-input">
+                    <input type="text" name="title" id="title" value={note.title} required onChange={onChangeInput} placeholder="Title" />
                 </div>
-            </div>
+                <div className="notesInput-input">
+                    <textarea name="content" id="content" cols="30" rows="10" value={note.content} required onChange={onChangeInput} placeholder="Content"></textarea>
+                </div>
+                <button>Create note</button>
+                <button onClick={() => setEditMode(false)}>Cancel</button>
+                </form>
+        </div>
+    </div>
     )
 }
 
