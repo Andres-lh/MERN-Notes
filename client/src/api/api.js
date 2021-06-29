@@ -15,3 +15,4 @@ export const signUp = (userData) => API.post('/users/register', userData);
 export const fetchNotes = () => API.get('/notes');
 export const createNote = (newNote) => API.post('/notes', newNote);
 export const deleteNote = (id) => API.delete( `/notes/${id}`);
+export const updateNote = (id, updatedNote) => API.put(`/notes/${id}`, updatedNote);

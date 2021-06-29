@@ -20,7 +20,7 @@ function Notes() {
                 ) : (
                     <div className="notes-container">
                        {notes && notes.map((note) => (
-                          <Note key={note._id} note={note} /> 
+                          <Note key={note._id} note={note} setOpenInput={setOpenInput} /> 
                        ))}
                        <i onClick={()=> setOpenInput(true)} className="button" />
                        <NotesInput openInput={openInput} setOpenInput={setOpenInput} />

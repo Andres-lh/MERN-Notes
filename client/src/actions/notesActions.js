@@ -1,4 +1,4 @@
-import { FETCH_NOTES, CREATE_NOTE, DELETE_NOTE } from '../constants/actionTypes';
+import { FETCH_NOTES, CREATE_NOTE, DELETE_NOTE, UPDATE_NOTE } from '../constants/actionTypes';
 import * as api from '../api/api';
 
 export const getNotes = () => async (dispatch) =>{
@@ -15,7 +15,6 @@ export const getNotes = () => async (dispatch) =>{
 
 export const createNote = (note) => async(dispatch) => {
     try {
-        console.log(note)
         const { data } = await api.createNote(note)
         dispatch({
             type: CREATE_NOTE,
@@ -35,5 +34,18 @@ export const deleteNote = (id) => async(dispatch) => {
         })
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const editNote = (id, updatedNote) => async(dispatch) => {
+    try {
+        console.log(id, updatedNote)
+        const { data } = await api.updateNote(id, updatedNote);
+        dispatch({
+            type: UPDATE_NOTE,
+            data
+        })
+    } catch (error) {
+        
     }
 }

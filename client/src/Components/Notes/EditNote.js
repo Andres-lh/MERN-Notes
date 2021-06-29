@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { createNote } from '../../actions/notesActions';
-import { useDispatch } from 'react-redux'
-
-import './NotesInput.css';
-
-function NotesInput({openInput, setOpenInput}) {
+import { useDispatch } from 'react-redux';
+import { editNote} from '../../actions/notesActions'
+function EditNote({title, id, content, setEditMode}) {
     const dispatch = useDispatch();
-
     const [note, setNote] = useState({
-        title:'',
-        content: ''
+        title: title,
+        content: content,
     })
 
     const onChangeInput = (e) => {
@@ -21,9 +17,9 @@ function NotesInput({openInput, setOpenInput}) {
         e.preventDefault();
 
         try {
-            dispatch(createNote(note));
+            dispatch(editNote(id, note));
             window.location.reload();
-            setOpenInput(false)
+            setEditMode(false)
             setNote({
                 title: '',
                 content: ''
@@ -33,31 +29,25 @@ function NotesInput({openInput, setOpenInput}) {
             console.log(error)
         }
     }
-
+    
     return (
-        <>
-        { openInput && (
-            <div  className="notesInput">
-                <i onClick={() => setOpenInput(false)}>close</i>
+        <div  className="notesInput">
+                <i onClick={()=> setEditMode(false)}>close</i>
                 <div className="notesInput-card">
                     <form onSubmit={handleSubmit} autoComplete="off">
                         <div>
                             <label>Title</label>
-                            <input type="text" name="title" id="title" value={note.title} required onChange={onChangeInput} />
+                            <input type="text" name="title" id="title" value={note.title} required onChange = {onChangeInput} />
                         </div>
                         <div>
                             <label>Content</label>
-                            <input type="text" name="content" id="content" value={note.content} required onChange={onChangeInput} />
+                            <input type="text" name="content" id="content" value={note.content} required onChange = {onChangeInput} />
                         </div>
-                        <button>create note</button>
+                        <button>save</button>
                     </form>
                 </div>
             </div>
-        )   
-        }
-        
-        </>
     )
 }
 
-export default NotesInput;
+export default EditNote
