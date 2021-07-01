@@ -8,12 +8,11 @@ function Note({note}) {
     const [deleteMessage, setDeleteMessage] = useState(false);
     const [editMode, setEditMode] = useState(false);
 
-    console.log(editMode)
     return (
         <div className = "note" >
             <div className = "noteContainer">
+                <h2>{note.title}</h2>
                 <div className = "noteContent">
-                    <h2>{note.title}</h2>
                     <p>{note.content}</p>
                 </div>
                 <div className = "noteFooter">

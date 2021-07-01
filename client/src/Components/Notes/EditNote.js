@@ -40,7 +40,7 @@ function EditNote({title, id, content, setEditMode}) {
                 <div className="notesInput-input">
                     <textarea name="content" id="content" cols="30" rows="10" value={note.content} required onChange={onChangeInput} placeholder="Content"></textarea>
                 </div>
-                <button>Create note</button>
+                <button>Save</button>
                 <button onClick={() => setEditMode(false)}>Cancel</button>
                 </form>
         </div>

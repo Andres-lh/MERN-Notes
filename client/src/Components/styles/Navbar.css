@@ -38,5 +38,9 @@
     transition: all 0.2s ease-out;
 }
 
+.navbar-account {
+    font-size: 30px;
+}
+
 
 

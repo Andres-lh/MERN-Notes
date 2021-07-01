@@ -1,6 +1,5 @@
 .notesInput {
     position: fixed;
-    color: red;
     top: 0;
     left: 0;
     right: 0;
@@ -13,7 +12,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30%;
     height: 500px;
     width: 450px;
     transform: translate(-50%, -60%);

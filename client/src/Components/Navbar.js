@@ -22,8 +22,7 @@ function Navbar({ setOption }) {
             </ul>
             
             <div className = "navbar-account">
-                
-                <i onClick={logout} on>logout</i>
+                <i onClick={logout} class="fas fa-user-circle"></i>
             </div>
             
         </div>

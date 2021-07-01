@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { deleteNote } from '../../actions/notesActions';
+import './DeleteMessage.css';
 
 function DeleteMessage({id, setDeleteMessage}) {
     const dispatch = useDispatch();
@@ -15,11 +16,14 @@ function DeleteMessage({id, setDeleteMessage}) {
         }
     }   
     return (
-        <div>
-            <h1>Are you sure you want to delete this note? </h1>
-            <button onClick={()=> deleteMyNote(id)}>Yes</button>
-            <button onClick={()=> setDeleteMessage(false)}>Cancel</button>
-
+        <div className="DeleteMessage">
+            <div className="DeleteMessage-container">
+                <h1>Delete note? </h1>
+                <div>
+                    <button onClick={()=> deleteMyNote(id)}>Yes</button>
+                    <button onClick={()=> setDeleteMessage(false)}>Cancel</button>
+                </div>   
+            </div>
         </div>
     )
 }

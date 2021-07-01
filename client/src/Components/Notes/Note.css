@@ -14,15 +14,22 @@
     flex-direction: column;
     height: 90%;
     width: 90%;
-    position: relative; 
- 
+    position: relative;  
+}
+
+.noteContainer > h2 {
+    color: black;
+    margin-top: 55px;
 }
 
 .noteContent {
-    height: 90%;
-    margin-top: 60px;
+    height: 110px;
+    margin: 10px 7px;
     color: black;
     width: auto;
+    overflow: hidden;
+    text-align: center;
+    align-content: center;
 }
 
 .noteFooter {
