@@ -1,9 +1,9 @@
 # MERN Notes-App
 Application that allows you to create, edit and delete notes. You can create an account or log in with your google account
-### Technologies and tools used
-**Fontend**: React, React Router, Redux, Redux Thunk, Axios, Google Login.
-**Backend:** Express, Mongoose, Rest API, JSON Web Token.
-**Database**: MongoDB Atlas.
+## Technologies and tools used
+- **Fontend**: React, React Router, Redux, Redux Thunk, Axios, Google Login.
+- **Backend:** Express, Mongoose, Rest API, JSON Web Token.
+- **Database**: MongoDB Atlas.
 
 ### ScreenShots
 
