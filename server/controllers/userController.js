@@ -1,42 +1,49 @@
 import Users from '../models/userModel.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import ErrorResponse from '../utils/errorResponse.js';
 
-export const userRegistration = async (req, res) => {
+export const userRegistration = async (req, res, next) => {
     const { username, email, password } = req.body;
     try {
-        const user = await Users.findOne({email: email})
-        if(user) return res.status(400).json({msg: "The email already exists."});
-    
-        const passwordHash = await bcrypt.hash(password, 10);
+        if(!username || !email || !password) return next(new ErrorResponse("Please fill all the fields"), 400);
 
-        const newUser = await Users.create({
-            username,
-            email,
-            password: passwordHash,
-        })
-
-        const token =  jwt.sign(newUser, process.env.TOKEN, {expiresIn: "5h"});
-        res.status(201).json({result: newUser, token});
+        const user = await Users.findOne({email})
         
-    } catch(err) {
-        return res.status(500).json({msg: err.message});
+        if(user) return next(new ErrorResponse("This email already exists"), 400);
+
+        const newUser = await Users.create({ username, email, password })
+
+        sendToken(newUser, 201, res);
+        
+    } catch(error) {
+        next(error);
     }
 }
 
-export const userLogin = async (req, res) => {
+export const userLogin = async (req, res, next) => {
     const { email, password } = req.body;
     try {
-        const user = await Users.findOne({ email: email } );
-        if(!user) return res.status(400).json({msg: "User doesn't exist."});
+
+        if(!email || !password) return next(new ErrorResponse("Please enter your email and password"), 400);
+
+        const user = await Users.findOne({ email }).select("+password");
+
+        if(!user) return next(new ErrorResponse("User doesn't exist."), 404)
 
         const matchPassword = await bcrypt.compare(password, user.password);
-        if(!matchPassword) return res.status(400).json({msg: "Password is incorrect."});
 
-        const payload = { id: user._id, name: user.username};
-        const token = jwt.sign(payload, process.env.TOKEN, {expiresIn: "5h"});
-        res.json({result: user, token});
-    } catch(err) {
-        return res.status(500).json({msg: err.message})
+        if(!matchPassword) return next(new ErrorResponse("Password is incorrect"), 401)
+
+        sendToken(user, 201, res);
+        
+    } catch(error) {
+        next(error);
     } 
 }
+
+const sendToken = (user, statusCode, res) => {
+    const token = jwt.sign({ id: user._id }, process.env.TOKEN, { expiresIn: "1d" });
+    res.status(statusCode).json({ success: true, token })
+}
+ 

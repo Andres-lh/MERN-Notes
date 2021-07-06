@@ -1,5 +1,7 @@
 export const SIGNIN = 'SIGNIN';
+export const SIGNIN_FAILURE = 'SIGNIN_FAILURE';
 export const SIGNUP = 'SIGNUP';
+export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 export const LOGOUT = 'LOGOUT';
 
 export const FETCH_NOTES = 'FETCH_NOTES';

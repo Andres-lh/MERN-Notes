@@ -4,16 +4,10 @@ import cors from 'cors';
 import connectDb from './config/db.js';
 import userRouter from './routes/userRouter.js';
 import notesRouter from './routes/notesRouter.js';
+import errorHandler from './middleware/errorHandler.js';
 
 const app = express();
-
 dotenv.config();
-
-//Database connection
-connectDb();
-
-
-const PORT = process.env.PORT;
 
 //Middlewares
 app.use(express.json({ limit: "30mb", extended: true}));
@@ -24,6 +18,12 @@ app.use(cors());
 app.use('/api/users', userRouter);
 app.use('/api/notes', notesRouter);
 
+//Error handler
+app.use(errorHandler);
 
+//Database connection
+connectDb();
+
+const PORT = process.env.PORT;
 app.listen(PORT, () =>console.log(`Server running on port http://localhost:${PORT}`))
 

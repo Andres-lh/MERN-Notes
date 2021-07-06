@@ -1,5 +1,5 @@
 
-import { SIGNIN, SIGNUP } from '../constants/actionTypes';
+import { SIGNIN, SIGNIN_FAILURE, SIGNUP, SIGNUP_FAILURE } from '../constants/actionTypes';
 import * as api from '../api/api';
 
 export const signIn = (user, history) => async (dispatch) => {
@@ -11,7 +11,11 @@ export const signIn = (user, history) => async (dispatch) => {
         })
         history.push('/');
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data.error);
+        dispatch({
+            type: SIGNIN_FAILURE, 
+            error: error.response.data.error
+        })
     }
 }
 

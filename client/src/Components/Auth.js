@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signIn, signUp } from '../actions/authActions';
 import { GoogleLogin } from 'react-google-login';
+import ErrorMessage from './ErrorMessage';
 import './styles/Auth.css';
 
 const Client_Id = process.env.REACT_APP_GOOGLE_ID;
@@ -25,13 +26,9 @@ function Login() {
         password: ''
     })
 
-    const [err, setErr] = useState('');
-
     const onChangeInput = e =>{
         const {name, value} = e.target;
         setUser({...user, [name]: value});
-
-        setErr('');
     }
 
     const switchAuth = () => {
@@ -125,10 +122,9 @@ function Login() {
                                 onFailure = {googleFailure}
                                 cookiePolicy = "single_host_origin"
                                 />
-                                
                         </>
                         }
-                    <h3>{err}</h3>  
+                    <ErrorMessage/> 
                 </form>
             </div>
 
