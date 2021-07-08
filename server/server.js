@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDb from './config/db.js';
 import userRouter from './routes/userRouter.js';
 import notesRouter from './routes/notesRouter.js';
+import transactionRouter from './routes/transactionRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 //Routes
 app.use('/api/users', userRouter);
 app.use('/api/notes', notesRouter);
+app.use('/api/transactions',  transactionRouter);
 
 //Error handler
 app.use(errorHandler);
