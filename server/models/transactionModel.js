@@ -1,18 +1,18 @@
 import mongoose from 'mongoose';
 
 const TransactionSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: [true, 'Please enter a name' ],
         trim: true
     },
+    userId: {
+        type: String,
+        required: true
+    },
     amount: {
         type: Number,
         required: [true, 'Please enter a number']
-    },
-    income : {
-        type: Boolean,
-        required: true
     },
     createdAt: {
         type: Date,

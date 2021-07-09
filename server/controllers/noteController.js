@@ -1,15 +1,15 @@
 import Notes from '../models/noteModel.js';
 
-export const getNotes = async (req, res) => {
+export const getNotes = async (req, res, next) => {
     try {
         const notes = await Notes.find({userId: req.user.id});
-        res.status(200).json(notes);
-    } catch (err) {
-        return res.status(500).json({msg: err.message});
+        res.status(200).json({ success: true, notes});
+    } catch (error) {
+        next(error);
     }
 }
 
-export const createNotes = async (req, res) => {
+export const createNotes = async (req, res, next) => {
     const {title, content, date} = req.body;
     try {
         const newNote = new Notes({
@@ -23,36 +23,36 @@ export const createNotes = async (req, res) => {
         await newNote.save();
         res.json({msg: "Note created"});
          
-    } catch (err) {
-        return res.status(500).json({msg: err.message});
+    } catch (error) {
+        next(error);
     }
 }
 
-export const getNote = async (req, res) => {
+export const getNote = async (req, res, next) => {
     try {
         const note = await Notes.findById(req.params.id);
         res.json(note);
-    } catch (err) {
-        return res.status(500).json({msg: err.message})
+    } catch (error) {
+        next(error);
     }
 }
 
-export const deleteNote = async (req, res) => {
+export const deleteNote = async (req, res, next) => {
     try {
         await Notes.findByIdAndDelete(req.params.id)
         res.json({msg: "Note deleted"})
-    } catch (err) {
-        return res.status(500).json({msg: err.message})
+    } catch (error) {
+        next(error);
     }
 }
 
-export const updateNote = async (req, res) => {
+export const updateNote = async (req, res, next) => {
     const {title, content, date} = req.body;
     try { 
         await Notes.findByIdAndUpdate({_id: req.params.id},{title, content, date})
         res.json({msg: "Note updated"});
-    } catch (err) {
-        return res.status(500).json({msg: err.message});
+    } catch (error) {
+        next(error);
     }
 }
 
