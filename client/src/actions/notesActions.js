@@ -4,9 +4,10 @@ import * as api from '../api/api';
 export const getNotes = () => async (dispatch) =>{
     try {
         const { data } = await api.fetchNotes();
+        console.log(data)
         dispatch({
             type: FETCH_NOTES,
-            data
+            data : data.notes
         })
     } catch (error) {
         console.log(error)

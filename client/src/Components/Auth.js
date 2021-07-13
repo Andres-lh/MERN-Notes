@@ -70,7 +70,7 @@ function Login() {
                     { isSignUp ? (
                         <>
                             <div className = "Auth-input">
-                                <input type="text" name="username" id="username" value={user.username} required onChange={onChangeInput}/>
+                                <input type="text" name="username" id="username" value={user.username} required onChange={onChangeInput} />
                                 <label>Username</label>
                             </div>
                             <div className = "Auth-input">
