@@ -1,10 +1,14 @@
 import mongoose from 'mongoose';
 
 const TransactionSchema = new mongoose.Schema({
-    title: {
+    name: {
         type: String,
         required: [true, 'Please enter a name' ],
         trim: true
+    },
+    type: {
+        type: String,
+        required: true
     },
     userId: {
         type: String,

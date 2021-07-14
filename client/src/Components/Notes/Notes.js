@@ -10,7 +10,6 @@ function Notes() {
     const [openInput, setOpenInput] = useState(false);
     const { loading, error, notes } = useSelector((state) => state.notes);
 
-    console.log(notes)
     return (
         <div className="notes">
             {loading ? (

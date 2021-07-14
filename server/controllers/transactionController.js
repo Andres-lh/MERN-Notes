@@ -11,13 +11,14 @@ export const getTransactions = async (req, res, next) => {
 }
 
 export const createTransaction = async (req, res, next) => {
-    const { title, amount } = req.body;
+    const { name, amount, type } = req.body;
 
     try {
-        if(!title || !amount) return next(new ErrorResponse("Please fill all the fields"), 400);
+        if(!name || !amount || !type) return next(new ErrorResponse("Please fill all the fields"), 400);
 
         const newTransaction = await Transaction.create({
-            title,
+            name,
+            type,
             amount,
             userId: req.user.id
         })

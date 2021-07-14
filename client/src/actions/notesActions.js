@@ -4,7 +4,6 @@ import * as api from '../api/api';
 export const getNotes = () => async (dispatch) =>{
     try {
         const { data } = await api.fetchNotes();
-        console.log(data)
         dispatch({
             type: FETCH_NOTES,
             data : data.notes
@@ -47,6 +46,6 @@ export const editNote = (id, updatedNote) => async(dispatch) => {
             data
         })
     } catch (error) {
-        
+        console.log(error)
     }
 }
