@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import axios from 'axios';
+import './TransactionsInput.css';
 
 function TransactionInput() {
 
@@ -35,17 +36,17 @@ function TransactionInput() {
 
     return (
         <form onSubmit={handleSubmit} >
-            <div className="tracker-input" >
+            <div className="transaction-input" >
                 <label>Type</label>
                 <select onChange={(e) => setTransaction({...transaction, type: e.target.value})}>
                     <option value="Income" >Income</option>
                     <option value="Expense" >Expense</option>
                 </select>
                  </div >
-                <div className="tracker-input">
+                <div className="transaction-input">
                     <input type="text" placeholder="Name" required name="name" id="name" value={transaction.name} onChange={onChangeInput} autoComplete="off"/>
                     <input type="number" placeholder="Add a value" name="amount" id="amount" value={transaction.amount} onChange={onChangeInput} min="1" autoComplete="off" />
-                    <button className="traker-button">Submit</button>
+                    <button className="transaction-input_button">Submit</button>
                 </div>
             </form>
     )

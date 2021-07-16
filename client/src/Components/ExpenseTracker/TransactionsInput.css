@@ -1,0 +1,56 @@
+.transaction-input {
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.transaction-input label {
+    color: rgb(238, 231, 231);
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+}
+
+.transaction-input select {
+    margin-left: 20px;
+    background: rgba(100, 129, 165, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    width: 150px;
+    border: none;
+    font-size: 18px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.transaction-input input {
+    padding: 4px;
+    width: 200px;
+    margin-right: 20px;
+    display: block;
+    letter-spacing: 0.8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    border: none;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    background: rgba(129, 93, 93, 0.3);
+}
+
+.transaction-input input::placeholder {
+    color: rgb(238, 231, 231);
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.transaction-input_button {
+    cursor: pointer;
+    background-color: rgb(81, 202, 44);
+    border-radius: 10px;
+    width: 60px;
+}

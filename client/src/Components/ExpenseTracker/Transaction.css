@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.transaction-grid {
+    width: 98%;
+    margin: 20px 0;
+    display: grid; 
+    grid-template-columns: 100px 250px 220px 20px; 
+    grid-template-rows: 1fr; 
+    gap: 1px 1px;
+}
+
+.transaction-grid p {
+    margin: 0 15px;
+    font-family: 'Caveat', cursive;
+    font-size: 25px; 
+    overflow-wrap: break-word;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.transaction_Expense {  
+    background-color: rgba(253, 6, 6, 0.2);
+}
+
+.transaction_Income {  
+    background-color: rgba(82, 241, 8, 0.2);
+}
+
+.transaction-delete {
+    color: rgb(151, 3, 3);
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease-in;
+}
+
+.transaction-delete:hover {
+    color: rgb(206, 22, 22);
+    transform: scale(1.1);
+}
