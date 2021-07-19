@@ -45,7 +45,8 @@
     color: black;
 }
 
-.transactions-total p, span {
+.transactions-total > p,
+.transactions-total > p > span {
     font-family: 'Caveat', cursive;
     font-size: 40px;
 }

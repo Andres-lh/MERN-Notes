@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { get } from 'mongoose';
 import { useEffect, useState } from 'react'
 import Transaction from './Transaction';
 import './Transactions.css'
 
 function Transactions() {
     const [transactions, setTransactions] = useState([]);
-    const number = -12000;
+
     useEffect(() => {
         const token = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
         const getTransaction = async () => {
@@ -16,7 +17,6 @@ function Transactions() {
             })
             setTransactions(data.data.transactions)
         }
-
         getTransaction();
     }, [transactions])
 
@@ -30,7 +30,7 @@ function Transactions() {
                 })}
             </div>  
             <div className="transactions-total">
-                <p>Total: <span> ${number}</span></p>
+                <p>Total: <span> {transactions.reduce((a, b) => a + b.amount, 0 )} </span></p>
                 
             </div>
         </div>
