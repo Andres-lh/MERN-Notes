@@ -1,24 +1,16 @@
-import axios from 'axios';
-import { get } from 'mongoose';
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Transaction from './Transaction';
+import { getTransactions } from '../../actions/transactionActions';
 import './Transactions.css'
 
 function Transactions() {
-    const [transactions, setTransactions] = useState([]);
-
+    const dispatch = useDispatch();
+    const { transactions } = useSelector((state) => state.transactions)
+    
     useEffect(() => {
-        const token = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
-        const getTransaction = async () => {
-            const data = await axios.get('/api/transactions', {
-                headers: {
-                    Authorization: token
-                }
-            })
-            setTransactions(data.data.transactions)
-        }
-        getTransaction();
-    }, [transactions])
+        dispatch(getTransactions());
+    }, [dispatch])
 
     return (
         <div className="tracker-container">

@@ -29,5 +29,9 @@ export const signUp = (user, history) => async (dispatch) => {
         history.push('/')
     } catch (error) {
         console.log(error);
+        dispatch({
+            type: SIGNUP_FAILURE, 
+            error: error.response.data.error
+        })
     }
 }
