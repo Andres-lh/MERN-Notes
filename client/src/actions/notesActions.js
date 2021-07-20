@@ -15,7 +15,7 @@ export const getNotes = () => async (dispatch) =>{
 
 export const createNote = (note) => async(dispatch) => {
     try {
-        const { data } = await api.createNote(note)
+        const { data } = await api.createNote(note);
         dispatch({
             type: CREATE_NOTE,
             data

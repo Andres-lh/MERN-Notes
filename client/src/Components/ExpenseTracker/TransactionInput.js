@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux'
-import axios from 'axios';
+import { createTransaction } from '../../actions/transactionActions';
 import './TransactionsInput.css';
 
 function TransactionInput() {
@@ -17,21 +17,19 @@ function TransactionInput() {
         setTransaction({ ...transaction, [name]: value })
     }
 
-    const createTransaction = async() => {
-        try {
-            await axios.post('/api/transactions', { name : transaction.name, type: transaction.type, amount: transaction.amount}, {
-                headers: {
-                        Authorization : `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
-                }
-            });
-        } catch (error) {
-            console.log(error.response.data.error)
-        }   
-        
-    }
     const handleSubmit = (e) => {
         e.preventDefault();
-        createTransaction();
+        
+        try {
+            dispatch(createTransaction(transaction));
+            setTransaction({
+                ...transaction,
+                name: "",
+                amount: ""
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
