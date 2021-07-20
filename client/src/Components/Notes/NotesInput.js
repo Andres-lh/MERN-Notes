@@ -16,13 +16,12 @@ function NotesInput({openInput, setOpenInput}) {
         const {name, value} = e.target;
         setNote({...note, [name]: value})
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
 
         try {
             dispatch(createNote(note));
-            window.location.reload();
             setOpenInput(false)
             setNote({
                 title: '',
@@ -47,7 +46,13 @@ function NotesInput({openInput, setOpenInput}) {
                             <textarea name="content" id="content" cols="30" rows="10" value={note.content} required onChange={onChangeInput} placeholder="Content"></textarea>
                         </div>
                         <button>Create note</button>
-                        <button onClick={() => setOpenInput(false)}>Cancel</button>
+                        <button onClick={() => {
+                            setOpenInput(false) 
+                            setNote({
+                                title: '',
+                                content: ''
+                            })
+                        }}>Cancel</button>
                         </form>
                 </div>
             </div>

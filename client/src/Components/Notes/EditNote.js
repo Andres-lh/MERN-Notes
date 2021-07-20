@@ -18,7 +18,6 @@ function EditNote({title, id, content, setEditMode}) {
 
         try {
             dispatch(editNote(id, note));
-            window.location.reload();
             setEditMode(false)
             setNote({
                 title: '',

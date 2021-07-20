@@ -11,7 +11,9 @@ function Note({note}) {
     return (
         <div className = "note" >
             <div className = "noteContainer">
-                <h2>{note.title}</h2>
+                <div>
+                    <h2>{note.title}</h2>
+                </div>
                 <div className = "noteContent">
                     <p>{note.content}</p>
                 </div>

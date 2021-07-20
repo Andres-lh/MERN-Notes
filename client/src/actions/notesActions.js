@@ -18,7 +18,7 @@ export const createNote = (note) => async(dispatch) => {
         const { data } = await api.createNote(note);
         dispatch({
             type: CREATE_NOTE,
-            data
+            data: data.newNote
         })
     } catch (error) {
         console.log(error)
@@ -39,11 +39,10 @@ export const deleteNote = (id) => async(dispatch) => {
 
 export const editNote = (id, updatedNote) => async(dispatch) => {
     try {
-        console.log(id, updatedNote)
         const { data } = await api.updateNote(id, updatedNote);
         dispatch({
             type: UPDATE_NOTE,
-            data
+            data: data.updatedNote
         })
     } catch (error) {
         console.log(error)

@@ -17,9 +17,15 @@
     position: relative;  
 }
 
-.noteContainer > h2 {
+.noteContainer h2 {
     color: black;
+    margin-left: 7px;
+    width: 90%;
+    height: 30px;
     margin-top: 55px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .noteContent {
