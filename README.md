@@ -14,3 +14,5 @@ Application that allows you to create, edit and delete notes. You can create an 
 [![](https://github.com/Andres-lh/MERN-Notes/blob/main/client/public/newnote.PNG?raw=true)](https://github.com/Andres-lh/MERN-Notes/blob/main/client/public/newnote.PNG?raw=true)
 
 [![](https://github.com/Andres-lh/MERN-Notes/blob/main/client/public/deletenote.PNG?raw=true)](http://https://github.com/Andres-lh/MERN-Notes/blob/main/client/public/deletenote.PNG?raw=true)
+
+![](https://github.com/Andres-lh/MERN-Notes/blob/main/client/public/ExpenseTracker.PNG?raw=true)
